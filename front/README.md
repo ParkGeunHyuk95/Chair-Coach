@@ -1,46 +1,114 @@
-# Getting Started with Create React App
+🗑️ CHAIR COACH
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+앉은 자세에서도 쉽게 할 수 있는 AI 스트레칭 자세를 제공하는 서비스
+배포 주소 ➡️ https://kdt-ai5-team04.elicecoding.com/
 
-## Available Scripts
 
-In the project directory, you can run:
+📜 프로젝트 구성 안내
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+assets : 프로젝트에서 사용한 이미지, 오디오 파일
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+components : 공통 컴포넌트 파일 모음
 
-### `npm test`
+pages : 각 컴포넌트 파일 모음
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+utils : 중복 기능 함수 모음
 
-### `npm run build`
+styles : 스타일링 파일 모음
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+▶️ 프로젝트 실행
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1️⃣ git clone https://kdt-gitlab.elice.io/ai_track/class_05/ai_project/team04/front.git
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2️⃣ npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3️⃣ npm start
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+🛠 프로젝트 기술 스택
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+기술 선택 이유
+
+
+
+
+React
+- 프론트엔드 팀원 모두 사용 가능한 라이브러리  
+- 컴포넌트화를 통해 재사용성이 높음
+
+
+Recoil
+- 다른 상태관리 라이브러리에 비해 사용 방법이 쉽고 간단
+
+
+styled-component
+- 각자 다른 부분을 개발하기 때문에 class/id가 겹치는 문제를 최소화  
+- 상속과 확장을 통해 재사용 용이
+
+
+TypeScript
+- 정적 타입을 지원하므로 컴파일 단계에서 오류 포착 가능 
+- 명시적인 타입 지정으로 코드의 가독성을 높이고 예측할 수 있게 하며 디버깅이 쉽다.
+   
+Chart.js
+- 운동기록, 거북목 진단 결과를 리포트 형식으로 표현 가능.
+
+Movenet
+- 유저의 실시간 관절 좌표를 인식하기 위한 tensorflow 의 movenet 모델 활용
+- 유저의 CPU만 사용하고, 프레임 누락이 발생하기 때문에 RAP(request animation frame) 활용하여 프레임 누락 방지 및 CPU 부담 최소화
+
+
+
+
+👥 FE 팀원 역할 분담
+
+박근혁
+1. 거북목 진단
+1-1) 거북목 자가진단 (서베이)
+1-2) 거북목 AI 진단
+⇒ Movenet, RAP(request animation frame) 및 알고리즘 활용하여 유저 거북목 각도 계산 및 이미지 업로드 기능
+
+2. AI 스트레칭
+Movenet, RAP 및 socket.io 활용하여, 유저 관절 좌표값 서버 전송 후, 응답에 따른 UI 변화
+RAP 도입 이유: setinterval로 진행 시 프레임 누락 발생, 및 유저 CPU 부담 높아짐⇒ RAP 사용함으로써 유저 GPU 사용 및 프레임 누락 방지
+
+3. Push Alarm
+WEB API의 notification 활용하여 진행.
+유저별 푸쉬 알람 시간 간격, on off 여부를 서버에 저장 후, 이를 활용하여 푸쉬 알람 서비스 진행하였음.
+
+4. Token 활용 Api 통신
+4-1) Access Token
+⇒ 평소 API 통신 시 에는 header에 access token 을 사용하여 통신 진행.
+4-2) Access Token 만료 시
+⇒ 로컬 스토리지의 Refresh Token 활용하여 서버에 토큰 재발급 요청 (이 때, 리프레쉬 토큰, 엑세스 토큰 두개 다 재발급)
+4-3) axios interceptors
+⇒ axios 통신 진행할 때, 세팅해 놓은 에러코드로 받을 경우, 서버 토큰 갱신 요청 진행.
+
+5. SNS 로그인(구글,네이버,카카오)
+각 SNS 로그인 URL 접속 후, 각 사이트에서 URL을 통해 보내는 코드를 searchParams활용하여 서버에 전달 및 로그인 처리 진행.
+
+
+유민지
+
+1. 전체 디자인 작업
+=> 피그마 작업
+
+2. styled-component를 이용한 CSS 스타일 관리
+2-1) Theme, Global 설정
+2-2) button, input 스타일 공용화
+2-3) 전반적 CSS 작업
+
+3. 회원관련 작업
+3-1) 이메일 회원가입, 로그인, 회원정보 변경, 회원탈퇴
+3-2) 자주사용될 정규식을 utils에 관리
+3-3) Recoil, Local Storage를 이용하여 로그인, 로그아웃 관리
+3-4) 불필요한 API 통신 방지를 위한 Warnning문구, check아이콘, disabled 사용
+
+4. 메인페이지 스크롤 애니메이션
+=> IntersectionObserver를 활용한 스크롤 애니메이션
