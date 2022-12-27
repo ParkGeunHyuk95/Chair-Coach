@@ -59,7 +59,7 @@ AI 실시간 자세 교정을 통해 정확한 자세를 알려줍니다.
 |파트|기술|
 |------|---|
 |FE|`Typescript` `Socket.io` `Chart.js` `Recoil` `Movenet` `StyledComponent`|
-|BE||
+|BE|`Typescript` `Node.js` `Express` `MySQL`|
 |AI|`Python` `FastAPI` `Socket.io` `scikit-learn`|
 
 </br>
