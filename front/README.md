@@ -1,4 +1,5 @@
-🗑️ CHAIR COACH
+![](./public/favicon_32.png)
+CHAIR COACH
 
 앉은 자세에서도 쉽게 할 수 있는 AI 스트레칭 자세를 제공하는 서비스
 배포 주소 ➡️ https://kdt-ai5-team04.elicecoding.com/
@@ -74,15 +75,15 @@ Movenet
 1-2) 거북목 AI 진단
 ⇒ Movenet, RAP(request animation frame) 및 알고리즘 활용하여 유저 거북목 각도 계산 및 이미지 업로드 기능
 
-2. AI 스트레칭
+1. AI 스트레칭
 Movenet, RAP 및 socket.io 활용하여, 유저 관절 좌표값 서버 전송 후, 응답에 따른 UI 변화
 RAP 도입 이유: setinterval로 진행 시 프레임 누락 발생, 및 유저 CPU 부담 높아짐⇒ RAP 사용함으로써 유저 GPU 사용 및 프레임 누락 방지
 
-3. Push Alarm
+1. Push Alarm
 WEB API의 notification 활용하여 진행.
 유저별 푸쉬 알람 시간 간격, on off 여부를 서버에 저장 후, 이를 활용하여 푸쉬 알람 서비스 진행하였음.
 
-4. Token 활용 Api 통신
+1. Token 활용 Api 통신
 4-1) Access Token
 ⇒ 평소 API 통신 시 에는 header에 access token 을 사용하여 통신 진행.
 4-2) Access Token 만료 시
@@ -90,7 +91,7 @@ WEB API의 notification 활용하여 진행.
 4-3) axios interceptors
 ⇒ axios 통신 진행할 때, 세팅해 놓은 에러코드로 받을 경우, 서버 토큰 갱신 요청 진행.
 
-5. SNS 로그인(구글,네이버,카카오)
+1. SNS 로그인(구글,네이버,카카오)
 각 SNS 로그인 URL 접속 후, 각 사이트에서 URL을 통해 보내는 코드를 searchParams활용하여 서버에 전달 및 로그인 처리 진행.
 
 
