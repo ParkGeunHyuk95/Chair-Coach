@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { RecoilRoot, useRecoilValue, useSetRecoilState } from "recoil";
 
 import GlobalStyles from "./styles/GlobalStyle";
@@ -26,7 +27,7 @@ import GoogleLogin from "./components/googleLogin/GoogleLogin";
 import AiStretching from "./pages/aiStretching/AiStretching";
 import StretchingGuide from "./pages/stretchingGuide/StretchingGuide";
 import userState from "./atoms/user";
-import { useEffect, useState } from "react";
+import WindowSizeError from "./components/windowSizeError/WindowSizeError";
 
 function App() {
   const setUser = useSetRecoilState(userState);
@@ -67,6 +68,7 @@ function App() {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
+          <WindowSizeError />
           <Header />
           <Routes>
             <Route path="/" element={<Main />} />
