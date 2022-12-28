@@ -73,7 +73,9 @@ const ResignMembership = ({
             type="password"
             value={currentPw}
             placeholder="현재 비밀번호를 입력해주세요."
-            onChange={(e) => setCurrentPw(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setCurrentPw(e.target.value)
+            }
           />
         </S.InputWrap>
 
