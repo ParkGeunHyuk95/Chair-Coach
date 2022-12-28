@@ -10,20 +10,24 @@ const NaverLogin = () => {
   const getNaverToken = async () => {
     const params = new URL(window.location.href).searchParams;
     const code = params.get("code");
-    const state = params.get("state");
     const res = await Api.post("naver", {
       code: code,
     });
-    const accessToken = res.data.accessToken;
-    const refreshToken = res.data.refreshToken;
-    sessionStorage.setItem("accessToken", accessToken);
-    localStorage.setItem("refreshToken", refreshToken);
-    const newUser = {
-      id: res.data.user_id,
-      nickname: res.data.nickname,
-    };
-    setUser(newUser);
-    navigate("/");
+    if (res.data.result === false) {
+      navigate("/");
+      alert(res.data.message);
+    } else {
+      const accessToken = res.data.accessToken;
+      const refreshToken = res.data.refreshToken;
+      sessionStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
+      const newUser = {
+        id: res.data.user_id,
+        nickname: res.data.nickname,
+      };
+      setUser(newUser);
+      navigate("/");
+    }
   };
 
   useEffect(() => {

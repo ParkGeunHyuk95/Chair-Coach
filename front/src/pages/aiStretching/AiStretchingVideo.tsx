@@ -67,7 +67,6 @@ const AiStretchingVideo = ({ tempref }: AiStretchingVideoProps) => {
       socket.emit("model", dataArr2);
       socket.on("model", (message) => {
         if (message === tempref.current) {
-          // console.log("1", message == temp);
           return;
         }
         tempref.current = message;

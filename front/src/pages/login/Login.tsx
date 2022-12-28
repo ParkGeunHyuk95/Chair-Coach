@@ -69,9 +69,6 @@ const Login = () => {
       setUser(null);
     }
   };
-  console.log("google", googleUrl);
-  console.log("naver", naverUrl);
-  console.log("kakao", KAKAO_AUTH_URL);
   return (
     <S.LoginLayout>
       <div className="inner">
