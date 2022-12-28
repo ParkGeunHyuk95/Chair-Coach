@@ -85,7 +85,7 @@ const LoginSNS = ({ user, setUser, provider }: LoginSNSType) => {
                 type="text"
                 value={String(nickname)}
                 placeholder="닉네임을 입력해주세요."
-                onChange={(e) => {
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   setNickname(e.target.value);
                   setCheckNickname(false);
                 }}

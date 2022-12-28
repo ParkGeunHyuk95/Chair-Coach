@@ -136,7 +136,7 @@ const LoginChairCoach = ({ user, setUser }: LoginChairCoachType) => {
                 type="text"
                 value={String(nickname)}
                 placeholder="닉네임을 입력해주세요."
-                onChange={(e) => {
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   setNickname(e.target.value);
                   setCheckNickname(false);
                 }}
@@ -197,7 +197,9 @@ const LoginChairCoach = ({ user, setUser }: LoginChairCoachType) => {
                   value={newPw}
                   placeholder="새로운 비밀번호를 입력해주세요."
                   disabled={!checkCurrentPw}
-                  onChange={(e) => setNewPw(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setNewPw(e.target.value)
+                  }
                 />
                 {checkNewPw && <FaCheck />}
               </F.Inputcontent>
@@ -219,7 +221,9 @@ const LoginChairCoach = ({ user, setUser }: LoginChairCoachType) => {
                   value={confirmNewPw}
                   placeholder="비밀번호를 다시 입력해주세요."
                   disabled={!checkNewPw}
-                  onChange={(e) => setConfirmNewPw(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setConfirmNewPw(e.target.value)
+                  }
                 />
                 {confirmNewPw.length > 0 && checkConfirmNewPw && <FaCheck />}
               </F.Inputcontent>
