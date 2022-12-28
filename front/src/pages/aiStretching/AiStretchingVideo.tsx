@@ -36,7 +36,7 @@ const AiStretchingVideo = ({ tempref }: AiStretchingVideoProps) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   // const socketUrl = "ws://localhost:5001";
-  const socketUrl = "wss://kdt-ai5-team04.elicecoding.com:5002";
+  const socketUrl = process.env.REACT_APP_SOCKET_URL;
   const socket = io(socketUrl as string);
 
   const detectWebCamFeed = async (detector: poseDetection.PoseDetector) => {

@@ -14,10 +14,20 @@ import userState from "./../../atoms/user";
 import * as Api from "../../api/api";
 
 const Login = () => {
+  const naverState = process.env.REACT_APP_NAVER_STATE;
+  const naverClientId = process.env.REACT_APP_NAVER_CLIENT_ID;
+  const naverRedirectURI = process.env.REACT_APP_NAVER_REDIRECT_URL;
+  const naverEncoded = encodeURIComponent(naverRedirectURI as string);
+  const kakaoClientId = process.env.REACT_APP_KAKAO_CLIENT_ID;
+  const kakaoRedirectURL = process.env.REACT_APP_KAKAO_REDIRECT_URL;
+  const googleRedirectUrl = process.env.REACT_APP_GOOGLE_REDIRECT_URL;
+  const googleEncoded = encodeURIComponent(googleRedirectUrl as string);
+  const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+  const googleState = process.env.REACT_APP_GOOGLE_STATE;
   const setUser = useSetRecoilState(userState);
-  const KAKAO_AUTH_URL = process.env.REACT_APP_KAKAO_URL;
-  const naverUrl = process.env.REACT_APP_NAVER_URL;
-  const googleUrl = process.env.REACT_APP_GOOGLE;
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${kakaoClientId}&redirect_uri=${kakaoRedirectURL}&response_type=code`;
+  const naverUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${naverClientId}&redirect_uri=${naverEncoded}&state=${naverState}`;
+  const googleUrl = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${googleEncoded}&client_id=${googleClientId}&access_type=offline&response_type=code&prompt=consent&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&state=${googleState}`;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [warning, setWaring] = useState("");
@@ -59,6 +69,9 @@ const Login = () => {
       setUser(null);
     }
   };
+  console.log("google", googleUrl);
+  console.log("naver", naverUrl);
+  console.log("kakao", KAKAO_AUTH_URL);
   return (
     <S.LoginLayout>
       <div className="inner">

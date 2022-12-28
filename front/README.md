@@ -65,22 +65,22 @@ styles : 스타일링 파일 모음
 <br></br>
 ## 박근혁
 
-**1. 거북목 진단**
-- 거북목 자가진단 (서베이)
+**1. AI 스트레칭기능**
+- Movenet을 활용하여 실시간 유저 관절 좌표 인식
+- RAF(request animation frame) 적용
+=>setinterval 이용 대비 프레임 누락 방지 및 유저 cpu 부담 최소화
+- Socket.io 활용하여 AI 서버와 실시간 소통
+=>유저 관절 좌표값을 실시간으로 전송하여, 그에 따른 RES를 받아 UI 적용
 
--  거북목 AI 진단
-⇒ Movenet, RAP(request animation frame) 및 알고리즘 활용하여 유저 거북목 각도 계산 및 이미지 업로드 기능
+**2. 거북목 AI진단기능**
+- MoveNet, RAF활용하여 유저의 실시간 관절 좌표 확인
+- 알고리즘을 활용한 거북목 각도 계산 구현<br>
+=>왼쪽, 오른쪽 인식 스코어 비교 후, 이에 따른 유저 거북목 각도 계산 알고리즘 구현<br>
 
-**2. AI 스트레칭**
-- Movenet, RAP 및 socket.io 활용하여, 유저 관절 좌표값 서버 전송 후, 응답에 따른 UI 변화
-- RAP 도입 이유: setinterval로 진행 시 프레임 누락 발생, 및 유저 CPU 부담 높아짐
-  
-  ⇒ RAP 사용함으로써 유저 GPU 사용 및 프레임 누락 방지
-
-**3. Push Alarm**
+**3. Push Alarm기능**
 - WEB API의 notification 활용하여 진행.<br/>유저별 푸쉬 알람 시간 간격, on off 여부를 서버에 저장 후, 이를 활용하여 푸쉬 알람 서비스 진행하였음.
 
-**4. Token 활용 Api 통신**
+**4. RefreshToken 활용 Api 통신 세팅**
 - Access Token
 ⇒ 평소 API 통신 시 에는 header에 access token 을 사용하여 통신 진행.
 - Access Token 만료 시
@@ -88,7 +88,10 @@ styles : 스타일링 파일 모음
 - axios interceptors
 ⇒ axios 통신 진행할 때, 세팅해 놓은 에러코드로 받을 경우, 서버 토큰 갱신 요청 진행.
 
-**5. SNS 로그인(구글,네이버,카카오)**
+**5. 거북목 진단(서베이)**
+- Location State 활용하여 프론트파트에서 구현 진행
+
+**6. SNS 로그인(구글,네이버,카카오)기능**
 - 각 SNS 로그인 URL 접속 후, 각 사이트에서 URL을 통해 보내는 코드를 searchParams활용하여 서버에 전달 및 로그인 처리 진행.
 
 <br></br>
