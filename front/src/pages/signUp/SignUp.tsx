@@ -125,7 +125,6 @@ const SingUp = () => {
       }
     } catch (err) {
       alert("인증번호가 틀렸습니다.");
-      console.log(code);
     }
   };
 
