@@ -68,13 +68,17 @@ const Login = () => {
               type="text"
               value={email}
               placeholder="이메일"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setEmail(e.target.value)
+              }
             />
             <F.InputText
               type="password"
               value={password}
               placeholder="비밀번호"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setPassword(e.target.value)
+              }
             />
 
             {warning === "email" && (

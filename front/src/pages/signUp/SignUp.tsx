@@ -189,7 +189,9 @@ const SingUp = () => {
                   type="email"
                   value={email}
                   placeholder="이메일을 입력해주세요."
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setEmail(e.target.value)
+                  }
                 />
                 {checkEmail && <FaCheck />}
                 <B.InputCheckBtn onClick={handlerCodeClick}>
@@ -209,7 +211,9 @@ const SingUp = () => {
                   type="text"
                   disabled={!checkEmail}
                   placeholder="인증번호를 입력해주세요."
-                  onChange={(e) => setCode(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setCode(e.target.value)
+                  }
                 />
                 {checkEmail && !checkCode && (
                   <span className="time">
@@ -234,7 +238,9 @@ const SingUp = () => {
                     value={password}
                     disabled={!checkCode}
                     placeholder="비밀번호를 입력해주세요."
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setPassword(e.target.value)
+                    }
                   />
                   {checkPassword && <FaCheck />}
                 </F.Inputcontent>
@@ -255,7 +261,9 @@ const SingUp = () => {
                     type="password"
                     disabled={!checkPassword}
                     placeholder="비밀번호를 다시 입력해주세요."
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setConfirmPassword(e.target.value)
+                    }
                   />
                   {checkConfirmPassword && <FaCheck />}
                 </F.Inputcontent>
@@ -275,7 +283,7 @@ const SingUp = () => {
                   value={nickname}
                   disabled={!checkConfirmPassword}
                   placeholder="닉네임을 입력해주세요."
-                  onChange={(e) => {
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setNickname(e.target.value);
                   }}
                 />
