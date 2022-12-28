@@ -75,7 +75,7 @@ const LoginChairCoach = ({ user, setUser }: LoginChairCoachType) => {
     e.preventDefault();
 
     // 비밀번호 형식이 아닐 경우
-    if (RegExp.validatePwd(currentPw)) {
+    if (!RegExp.validatePwd(currentPw)) {
       alert("비밀번호을 다시 입력해주세요.");
       return;
     }
@@ -167,7 +167,9 @@ const LoginChairCoach = ({ user, setUser }: LoginChairCoachType) => {
                 value={currentPw}
                 placeholder="현재 비밀번호를 입력해주세요."
                 disabled={!checkNickname}
-                onChange={(e) => setCurrentPw(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setCurrentPw(e.target.value)
+                }
               />
               {checkCurrentPw && <FaCheck />}
               <B.InputCheckBtn onClick={handlerCheckCurrentPwClick}>

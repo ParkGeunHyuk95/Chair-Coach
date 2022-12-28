@@ -78,7 +78,7 @@ const SingUp = () => {
   };
 
   // time이 0일 경우
-  if (!time) {
+  if (time === 0) {
     clearInterval(intervalId.current);
     alert("인증번호 유효시간이 지났습니다. \n인증번호를 다시 발급해주세요.");
     setTime(BASIC_TIME);
