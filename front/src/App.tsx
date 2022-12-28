@@ -25,6 +25,7 @@ import MyPage from "./pages/myPage/MyPage";
 import GoogleLogin from "./components/googleLogin/GoogleLogin";
 import AiStretching from "./pages/aiStretching/AiStretching";
 import StretchingGuide from "./pages/stretchingGuide/StretchingGuide";
+import WindowSizeError from "./components/windowSizeError/WindowSizeError";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
+          <WindowSizeError />
           <Header />
           <Routes>
             <Route path="/" element={<Main />} />
