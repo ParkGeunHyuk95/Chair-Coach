@@ -155,7 +155,7 @@ const NeckVideo = ({
     formData.append("file", file);
     const res = await axios({
       method: "post",
-      url: `https://chaircoach.dogfoot:5000/necks/${user?.id}`,
+      url: `https://chaircoach.dogfoot.info:5000/necks/${user?.id}`,
       data: {
         file: file,
         result: Math.abs(90 - Math.abs(angle)),
