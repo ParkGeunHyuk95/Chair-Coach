@@ -11,6 +11,7 @@ const InspectionResult = () => {
   const [user, setUser] = useRecoilState(userState);
   const [data, setData] = useState(null);
   useEffect(() => {
+    if (user?.id === undefined) return;
     Api.get(`necks/${user?.id}`).then((res) =>
       setData(res.data.list[res.data.list.length - 1])
     );
@@ -21,14 +22,14 @@ const InspectionResult = () => {
         <S.Title>거북목증후군 자가진단 테스트 결과</S.Title>
 
         <S.InspectionResultWrap>
-          <img
-            // src={`http://localhost:5003/${(data as any)?.filename}`}
-            src={`https://chaircoach.dogfoot.info:5000/${
-              (data as any)?.filename
-            }`}
-            alt="사진들어갈 곳"
-          />
-
+          {data !== null ? (
+            <img
+              src={`https://chaircoach.dogfoot.info:5000/${
+                (data as any)?.filename
+              }`}
+              alt="사진들어갈 곳"
+            />
+          ) : null}
           <S.SubTitle1>
             목과 어깨의 각도가{" "}
             <S.PointText>

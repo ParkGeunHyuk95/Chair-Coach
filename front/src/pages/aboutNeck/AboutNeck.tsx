@@ -69,11 +69,11 @@ const AboutNeck = () => {
               }}
             >
               <S.SubTitle>거북목증후군 자가진단 테스트</S.SubTitle>
-              <p>
+              <S.Text>
                 간단한 설문 테스트를 통해
                 <br />
                 거북목 증후군을 자가진단해 볼 수 있습니다.
-              </p>
+              </S.Text>
             </S.ChoiceBtn>
 
             <S.ChoiceBtn
@@ -83,10 +83,10 @@ const AboutNeck = () => {
               }}
             >
               <S.SubTitle>체어코치 AI를 통한 거북목 진단</S.SubTitle>
-              <p>
+              <S.Text>
                 웹캠을 이용한 AI 진단을 통해
                 <br /> 거북목 여부를 정확하게 진단해볼 수 있습니다.
-              </p>
+              </S.Text>
             </S.ChoiceBtn>
           </S.BtnBox>
         </S.ChioceBox>
