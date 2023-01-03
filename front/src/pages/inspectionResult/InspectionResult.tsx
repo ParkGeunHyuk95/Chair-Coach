@@ -23,7 +23,7 @@ const InspectionResult = () => {
         <S.InspectionResultWrap>
           <img
             // src={`http://localhost:5003/${(data as any)?.filename}`}
-            src={`https://kdt-ai5-team04.elicecoding.com:5000/${
+            src={`https://chaircoach.dogfoot.info:5000/${
               (data as any)?.filename
             }`}
             alt="사진들어갈 곳"
