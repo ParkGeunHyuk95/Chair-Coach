@@ -23,7 +23,7 @@ export const SubTitle = styled.h3`
   font-weight: 500;
 `;
 
-export const Text = styled.p`
+export const Text = styled.span`
   margin-top: 20px;
   line-height: 1.25;
   span {
