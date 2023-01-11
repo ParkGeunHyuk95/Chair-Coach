@@ -4,6 +4,7 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { BsFillClockFill } from "react-icons/bs";
 import MyChairReportChart from "./MyChairReportChart";
 import * as Api from "../../../../api/api";
+import "../../../../utils/GetWeek";
 
 export interface MyChairReportProps {
   timeInfo?: string;
@@ -16,7 +17,7 @@ const MyChairReport = ({ year, user_id }: MyChairReportProps) => {
   const [data, setData] = useState<number[] | null>(null);
   const [total, setTotal] = useState<number | null>(null);
   const [curYear, setCurYear] = useState<number>(year!);
-  const [curWeek, setCurWeek] = useState<number>(50);
+  const [curWeek, setCurWeek] = useState<number>(new Date().getWeek());
   const [isSelected, SetIsSelected] = useState<number[]>([1, 0]);
 
   const onClickYearButton = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -35,9 +36,13 @@ const MyChairReport = ({ year, user_id }: MyChairReportProps) => {
   const onClickPrevButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (timeInfo === "year") {
-      setCurYear((prev) => prev - 1);
+      if (curYear > 0) {
+        setCurYear((prev) => prev - 1);
+      }
     } else if (timeInfo === "week") {
-      setCurWeek((prev) => prev - 1);
+      if (curWeek > 0) {
+        setCurWeek((prev) => prev - 1);
+      }
     }
   };
 
@@ -46,7 +51,9 @@ const MyChairReport = ({ year, user_id }: MyChairReportProps) => {
     if (timeInfo === "year") {
       setCurYear((prev) => prev + 1);
     } else if (timeInfo === "week") {
-      setCurWeek((prev) => prev + 1);
+      if (curWeek < 53) {
+        setCurWeek((prev) => prev + 1);
+      }
     }
   };
 
@@ -90,6 +97,7 @@ const MyChairReport = ({ year, user_id }: MyChairReportProps) => {
   const getWeekData = async () => {
     try {
       const res = await Api.get(`bodies/${user_id}/${curYear}/${curWeek}`);
+      console.log(curYear, curWeek, res.data);
       if (res.data.list.length) {
         const newData = new Array(7).fill(0);
         for (let obj of res.data.list) {
