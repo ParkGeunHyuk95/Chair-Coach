@@ -188,6 +188,10 @@ var bodyController = /** @class */ (function () {
                         }
                         year = req.params.year;
                         week = req.params.week;
+                        if (Number(week) < 10) {
+                            week = "0" + String(Number(week));
+                            console.log("WEEK: ", week);
+                        }
                         return [4 /*yield*/, bodyService_1.default.getBodiesByWeek({
                                 user_id: user_id,
                                 year: year,

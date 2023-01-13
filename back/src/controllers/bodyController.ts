@@ -108,7 +108,11 @@ class bodyController {
         );
       }
       const year = req.params.year;
-      const week = req.params.week;
+      let week = req.params.week;
+      if (Number(week) < 10) {
+        week = "0" + String(Number(week));
+        console.log("WEEK: ", week);
+      }
       const getBodiesByWeek = await bodyService.getBodiesByWeek({
         user_id,
         year,
